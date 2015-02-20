@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+gem "openc-schema", github: "OpenAddressesUk/openc-schema"
+gem "turbot-runner", github: "OpenAddressesUk/turbot-runner"
+
 gemspec
 
 group :development, :test do
@@ -22,4 +25,3 @@ group :test do
   gem "sqlite3"
   gem "webmock"
 end
-
