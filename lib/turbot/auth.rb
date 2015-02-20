@@ -40,7 +40,7 @@ class Turbot::Auth
     end
 
     def default_host
-      "http://turbot.opencorporates.com"
+      "http://turbot.openaddressesuk.org"
     end
 
     def git_host
