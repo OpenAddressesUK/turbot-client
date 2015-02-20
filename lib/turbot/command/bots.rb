@@ -331,7 +331,7 @@ class Turbot::Command::Bots < Turbot::Command::Base
 
   def get_schema(type)
     hyphenated_name = type.to_s.gsub("_", "-").gsub(" ", "-")
-    File.expand_path("../../../../schema/schemas/#{hyphenated_name}-schema.json", __FILE__)
+    File.join(Gem.loaded_specs['openc-schema'].full_gem_path, 'schemas', "#{hyphenated_name}-schema.json")
   end
 
   def create_zip_archive(archive_path, basepath, subpaths)
