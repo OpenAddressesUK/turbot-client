@@ -14,7 +14,7 @@ describe Turbot::Client do
 
   it "Client.auth -> get user details" do
     user_info = { "api_key" => "abc" }
-    stub_request(:post, "https://foo:bar@api.turbot.com/login").to_return(:body => json_encode(user_info))
+    stub_request(:post, "http://foo:bar@turbot.openaddressesuk.org/login").to_return(:body => json_encode(user_info))
     capture_stderr do # capture deprecation message
       Turbot::Client.auth("foo", "bar").should == user_info
     end
@@ -450,7 +450,7 @@ describe Turbot::Client do
     end
 
     it "install_addon(bot_name, addon_name) with response" do
-      stub_request(:post, "https://api.turbot.com/bots/example/addons/addon1").
+      stub_request(:post, "#{TURBOT_HOST}/bots/example/addons/addon1").
         to_return(:body => json_encode({'price' => 'free', 'message' => "Don't Panic"}))
 
       @client.install_addon('example', 'addon1').
@@ -458,7 +458,7 @@ describe Turbot::Client do
     end
 
     it "upgrade_addon(bot_name, addon_name) with response" do
-      stub_request(:put, "https://api.turbot.com/bots/example/addons/addon1").
+      stub_request(:put, "#{TURBOT_HOST}/bots/example/addons/addon1").
         to_return(:body => json_encode('price' => 'free', 'message' => "Don't Panic"))
 
       @client.upgrade_addon('example', 'addon1').
@@ -466,7 +466,7 @@ describe Turbot::Client do
     end
 
     it "downgrade_addon(bot_name, addon_name) with response" do
-      stub_request(:put, "https://api.turbot.com/bots/example/addons/addon1").
+      stub_request(:put, "#{TURBOT_HOST}/bots/example/addons/addon1").
         to_return(:body => json_encode('price' => 'free', 'message' => "Don't Panic"))
 
       @client.downgrade_addon('example', 'addon1').
@@ -488,21 +488,21 @@ describe Turbot::Client do
     end
 
     it "creates a RestClient resource for making calls" do
-      @client.stub!(:host).and_return('turbot.com')
+  #    @client.stub!(:host).and_return('turbot.com')
       @client.stub!(:user).and_return('joe@example.com')
       @client.stub!(:password).and_return('secret')
 
       res = @client.resource('/xyz')
 
-      res.url.should == 'https://api.turbot.com/xyz'
+      res.url.should == "#{TURBOT_HOST}/xyz"
       res.user.should == 'joe@example.com'
       res.password.should == 'secret'
     end
 
-    it "appends the api. prefix to the host" do
-      @client.host = "turbot.com"
-      @client.resource('/xyz').url.should == 'https://api.turbot.com/xyz'
-    end
+#    it "appends the api. prefix to the host" do
+#      @client.host = "turbot.com"
+#      @client.resource('/xyz').url.should == "#{TURBOT_HOST}/xyz"
+#    end
 
     it "doesn't add the api. prefix to full hosts" do
       @client.host = 'http://resource'

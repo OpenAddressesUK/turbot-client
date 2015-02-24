@@ -19,6 +19,8 @@ require "webmock/rspec"
 
 include WebMock::API
 
+TURBOT_HOST="http://turbot.openaddressesuk.org"
+
 WebMock::HttpLibAdapters::ExconAdapter.disable!
 
 def api
@@ -30,7 +32,7 @@ def org_api
 end
 
 def stub_api_request(method, path)
-  stub_request(method, "https://api.turbot.com#{path}")
+  stub_request(method, "#{TURBOT_HOST}#{path}")
 end
 
 def prepare_command(klass)

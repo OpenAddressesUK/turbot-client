@@ -9,6 +9,7 @@ describe Turbot::Command::Bots do
         'data_type' => 'dummy',
         'identifying_fields' => ['name'],
         'files' => 'scraper.rb',
+        'publisher' => 'Open Addresses, Yo'
       }
       Turbot::Command::Bots.any_instance.stub(:parsed_manifest).and_return(config)
     end

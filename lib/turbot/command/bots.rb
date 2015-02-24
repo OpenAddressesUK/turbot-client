@@ -307,6 +307,12 @@ class Turbot::Command::Bots < Turbot::Command::Base
     end
   end
 
+  def config values
+    require 'pry'
+    binding.pry
+    api.update_bot bot, nil, values
+  end
+
   private
   def spinner(p)
     parts = "\|/-" * 2
