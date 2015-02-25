@@ -307,10 +307,15 @@ class Turbot::Command::Bots < Turbot::Command::Base
     end
   end
 
-  def config values
-    require 'pry'
-    binding.pry
-    api.update_bot bot, nil, values
+  def config
+    envs = {}
+    @args.each do |pair|
+      if pair =~ /([A-Z]*)=(.*)/
+        envs[$1] = $2
+      end
+    end
+
+    api.update_bot bot, nil, envs
   end
 
   private

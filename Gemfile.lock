@@ -5,6 +5,14 @@ GIT
     openc-schema (0.0.1)
 
 GIT
+  remote: git://github.com/OpenAddressesUk/turbot-api.git
+  revision: ef6667208978e9956526ab2987bcad275de8d1d0
+  specs:
+    turbot-api (0.0.16)
+      rest-client (~> 1.6.1)
+      rubyzip
+
+GIT
   remote: git://github.com/OpenAddressesUk/turbot-runner.git
   revision: 42e7dca653bf29e5bf1de5bd4c9499d1e4fe86cc
   specs:
@@ -22,7 +30,7 @@ PATH
       netrc (~> 0.7.7)
       rest-client (~> 1.6.1)
       rubyzip (>= 1.0.0)
-      turbot-api (= 0.0.14)
+      turbot-api (>= 0.0.14)
       turbotlib (~> 0.0.8)
 
 GEM
@@ -109,9 +117,6 @@ GEM
     sqlite_magic (0.0.3)
       sqlite3
     thread_safe (0.3.4)
-    turbot-api (0.0.14)
-      rest-client (~> 1.6.1)
-      rubyzip
     turbotlib (0.0.8)
       scraperwiki (= 3.0.2)
     tzinfo (1.2.2)
@@ -140,5 +145,6 @@ DEPENDENCIES
   rspec (~> 2.0)
   sqlite3
   turbot!
+  turbot-api!
   turbot-runner!
   webmock

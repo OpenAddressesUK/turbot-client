@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "openc-schema", github: "OpenAddressesUk/openc-schema"
 gem "turbot-runner", github: "OpenAddressesUk/turbot-runner"
+gem "turbot-api", github: "OpenAddressesUk/turbot-api"
 
 gemspec
 
