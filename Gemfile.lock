@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/OpenAddressesUk/turbot-runner.git
-  revision: 42e7dca653bf29e5bf1de5bd4c9499d1e4fe86cc
+  revision: 2b53fd9fe69d680f7886999a07e0e4ae4ded751e
   specs:
     turbot-runner (0.1.27)
       openc-json_schema (= 0.0.5)
